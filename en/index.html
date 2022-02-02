@@ -1,0 +1,334 @@
+<html lang="en">
+
+<head>
+   <title>SLORISK - THE SLOVENIAN DIABETES RISK QUESTIONNAIRE</title>
+   <link rel="shortcut icon" href="../images/logo-um-fhs.png" type="image/x-icon">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <!-- Angular Material style sheet -->
+   <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+   <link rel="stylesheet" href="../css/styles.css">
+   <link rel="stylesheet" href="../../stylesheets/coloringpage.css" type="text/css" media="screen, projection" />
+   <link rel="stylesheet" href="../../stylesheets/coloringpageprint.css" type="text/css" media="print" />
+</head>
+
+<body ng-app="BlankApp" ng-cloak>
+   <div ng-controller="AppCtrl" class="sample" layout="column" max-width=100% ng-cloak>
+      <md-content class="md-padding" md-dynamic-height>
+         <md-tabs md-selected="selectedIndex" md-border-bottom md-autoselect md-dynamic-height>
+            <md-tab ng-repeat="tab in tabs" ng-disabled="tab.disabled" label="{{tab.title}}" height="300px">
+               <div class="demo-tab tab{{$index%4}}" style="padding: 25px; text-align: center;">
+                  <div ng-bind="tab.content" style="font-weight: bold; font-size: 25"></div>
+               </div>
+               <div align="center">
+                  <img style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"
+                     ng-src={{tab.image}}></img>
+                  </br></br>
+               </div>
+            </md-tab>
+         </md-tabs>
+         <form ng-submit="addTab(tTitle,tContent)">
+            <!-- layout="column" -->
+
+            <div id='id_0' style=" max-width: 1500px; ">
+               <!-- position:absolute;  left: 150px; top:1500px; -->
+               <md-content style="padding-left:100px; padding-right:100px">
+                  <h2 style=" font-family: 'Arial Black', Gadget, sans-serif">A COMPREHENSIVE MODEL FOR THE EARLY
+                     DETECTION OF TYPE 2 DIABETES MELLITUS </h2>
+
+                  <h3 style=" font-family: 'Arial Black', Gadget, sans-serif">SLORISK � THE SLOVENIAN DIABETES RISK
+                     QUESTIONNAIRE</h3>
+
+
+                  <p style="font-size : 20; font-family: 'Arial">Type 2 Diabetes is a long term disease, caused by a
+                     lack of insulin as a result of the pancreas failure or lower effect of insulin on the body tissues,
+                     muscles and the liver. Symptoms of pre-diabetes and Type 2 Diabetes are often invisible, so it is
+                     essential to perform prevention of disease and early detection. Untreated diabetes can lead to
+                     heart disease, stroke, high blood pressure, circulation problems, and damage of kidneys and eyes.
+                     Especially important activities for reducing the possibility of development the Type 2 Diabetestype
+                     2 diabetes.</p>
+                  <p style="font-size : 20; font-family: 'Arial">The following questions will help you to find out your
+                     risk of developing Type 2 Diabetes. You will be asked about risk factors for type 2 diabetes, such
+                     as gender, age, family history of diabetes, physical activity, blood pressure, eating habits and
+                     the history of high blood sugar. You will also be asked to measure your waist circumference.</p>
+                  <p style="font-size : 20; font-family: 'Arial">Please answer the questions honestly and completely.
+                     Your answers are confidential and anonymous. The results of completed questionnaire may help you at
+                     understanding risk factors for Type 2 Diabetes. </p>
+                  <p style="font-size : 20; font-family: 'Arial">Although the questionnaire is primarily aimed for
+                     adults between 40 and 74 years old, it can be applied to younger persons, but they must take into
+                     account the results with some caution.</p>
+                  <md-button class="add-tab md-primary md-raised" type="submit" style="margin-right: 0;"
+                     onclick="izvedi()">Next</md-button>
+               </md-content>
+            </div>
+
+            <!--  Gender  -->
+            <div id="id_1" ng-controller="AppCtrl" style="display: none;  max-width: 1500px; ">
+               <md-content style="padding-left:30%; padding-right:100px">
+                  <h3>
+                     Choose gender: <span
+                        ng-attr-style="border: 1px solid #333; background: rgb({{color.red}},{{color.green}},{{color.blue}})"></span>
+                  </h3>
+                  <md-radio-group ng-model="check_spol" style="padding-left: 30px">
+                     <md-radio-button name="status" value="m">Male</md-radio-button>
+                     <md-radio-button name="status" value="f">Female</md-radio-button>
+                  </md-radio-group>
+                  <div class="check-element animate-show-hide" ng-show="check_spol" style="width:500;">
+                     <i>Male are at higher risk for developing Type 2 Diabetes. Possible reason is that women visit GP
+                        more frequently than men.</i>
+                  </div>
+                  <md-button class="add-tab md-primary md-raised" ng-disabled="!check_spol" type="submit"
+                     style="margin-right: 0;" onclick="izvedi()" ng-click="submit_female(check_spol);">Next</md-button>
+               </md-content>
+            </div>
+
+            <!--  Age  -->
+            <div id='id_2' ng-controller="AppCtrl" ng-cloak style="display: none;">
+               <md-content style="padding-left:30%; padding-right:100px">
+                  <h3>
+                     Choose age:
+                  </h3>
+                  <md-slider-container style="width:400px;">
+                     <md-slider min="20" max="100" ng-model="color.red" aria-label="red" id="red-slider">
+                     </md-slider>
+                     <md-input-container>
+                        <input type="number" ng-model="color.red" aria-label="red" aria-controls="red-slider" min="20"
+                           max="100" style="font-size: 13.6px;">
+                     </md-input-container>
+                  </md-slider-container>
+                  <div class="check-element animate-show-hide" ng-show="color.red" style="width:500px;">
+                     <i> With age, the risk of developing Type 2 Diabetes increases.</i>
+                  </div>
+                  <md-button class="add-tab md-primary md-raised" ng-disabled="!color.red" type="submit"
+                     style="margin-right: 0;" onclick="izvedi()" ng-click="submit_age(color.red);">Next</md-button>
+               </md-content>
+            </div>
+
+            <!--  Waist circumference  -->
+            <div id='id_3' ng-controller="AppCtrl" ng-cloak style="display: none;">
+               <h3 style="text-align:center">
+                  To measure waist circumference, use the measuring tape. <br>
+                  Place the measuring tape around your waist at the level of your belly button. Relax and breathe out.
+                  <br>
+                  Do not hold your breath when measuring.
+               </h3>
+               <md-content style="padding-left:30%; padding-right:100px">
+                  <h3>
+                     Waist circumference (in cm)
+                  </h3>
+                  <md-slider-container style="width:400px;">
+                     <md-slider min="60" max="150" ng-model="slider_obsegPasu" aria-label="red" id="red-slider"
+                        style="width:100px;">
+                     </md-slider>
+                     <md-input-container>
+                        <input type="number" ng-model="slider_obsegPasu" aria-label="red" aria-controls="red-slider"
+                           min="60" max="150" style="font-size: 13.6px;">
+                     </md-input-container>
+
+                  </md-slider-container>
+                  <div class="check-element animate-show-hide" ng-show="slider_obsegPasu" style="width:700px;">
+                     <i>Abdominal fat is one of the risk factors for developing Type 2 Diabetes.</i>
+                  </div>
+
+                  <md-button class="add-tab md-primary md-raised" ng-disabled="!slider_obsegPasu" type="submit"
+                     style="margin-right: 0;" onclick="izvedi()" ng-click="submit_waist(slider_obsegPasu)">Next
+                  </md-button>
+               </md-content>
+            </div>
+
+            <!--  Phsyical activity  -->
+            <div id="id_4" ng-controller="AppCtrl" style="display: none;">
+               <h3 align="center">
+                  Do you usually do some physical activity, such as brisk walking, for at least 30 minutes each day?
+                  </br> (The activity can be performed in the office or at home)
+               </h3>
+               <md-content style="padding-left:30%; padding-right:100px">
+
+                  <md-radio-group ng-model="check_telesnaAktivnost" style="padding-left: 30px">
+                     <md-radio-button value="Yes">Yes</md-radio-button>
+                     <md-radio-button value="No">No</md-radio-button>
+                  </md-radio-group>
+                  <div class="check-element animate-show-hide" ng-show="check_telesnaAktivnost" style="width:80%;">
+                     <i>Risk of developing Type 2 Diabetes increases by 86.8% in individuals who are not physically
+                        active. Regular physical activity is an essential element for regulating proper weight and to
+                        reduce risk factors for Type 2 Diabetes. World Health Organization recommends at least 30
+                        minutes of physical activity per day or 150 minutes per week.</i>
+                  </div>
+                  <md-button class="add-tab md-primary md-raised" ng-disabled="!check_telesnaAktivnost" type="submit"
+                     style="margin-right: 0;" onclick="izvedi()" ng-click="submit_physInact(check_telesnaAktivnost)">
+                     Next</md-button>
+               </md-content>
+            </div>
+
+            <!--  history elevated blood sugar  -->
+            <div id="id_5" ng-controller="AppCtrl" style="display: none;">
+               <h3 align="center">
+                  Have you ever been found to have high blood sugar? </br>(eg. in the case of periodic review, during an
+                  illness, during pregnancy?)
+               </h3>
+               <md-content style="padding-left:30%; padding-right:100px">
+                  <md-radio-group ng-model="check_povisanKrvniSladkor" style="padding-left: 30px">
+                     <md-radio-button value="Yes">Yes</md-radio-button>
+                     <md-radio-button value="No">No</md-radio-button>
+                  </md-radio-group>
+                  <div class="check-element animate-show-hide" ng-show="check_povisanKrvniSladkor" style="width:80%;">
+                     <i>The probability of development Type 2 Diabetes is higher by 64.4% in those individuals who have
+                        prior elevated blood sugar levels. History of high blood sugar can be caused by metabolic
+                        imbalance or pre-diabetes. An unusual increase in blood sugar level can be a warning sign for
+                        possible development of Type 2 Diabetes. Women who have had high blood sugar during pregnancy
+                        are at higher risk of developing Type 2 Diabetes.</i>
+                  </div>
+                  <md-button class="add-tab md-primary md-raised" ng-disabled="!check_povisanKrvniSladkor" type="submit"
+                     style="margin-right: 0;" onclick="izvedi()"
+                     ng-click="submit_bSugarHist(check_povisanKrvniSladkor)">Next</md-button>
+               </md-content>
+            </div>
+
+            <!--  medicine elevated BP  -->
+            <div id="id_6" ng-controller="AppCtrl" style="display: none;">
+               <md-content style="padding-left:30%; padding-right:100px">
+                  <h3>
+                     Are you taking medicines for high blood pressure?
+                  </h3>
+                  <md-radio-group ng-model="check_hypertensionDrugs" style="padding-left: 30px">
+                     <md-radio-button value="Yes">Yes</md-radio-button>
+                     <md-radio-button value="No">No</md-radio-button>
+                  </md-radio-group>
+                  <div class="check-element animate-show-hide" ng-show="check_hypertensionDrugs" style="width:630px;">
+                     <i>Increased blood pressure (Arterial hypertension) is present in 70% of patients with Type 2
+                        Diabetes.</i>
+                  </div>
+                  <md-button class="add-tab md-primary md-raised" ng-disabled="!check_hypertensionDrugs" type="submit"
+                     style="margin-right: 0;" onclick="izvedi()" ng-click="submit_hyperDrugs(check_hypertensionDrugs)">
+                     Next</md-button>
+               </md-content>
+            </div>
+
+            <!--  Family diabetes  -->
+            <div id="id_7" ng-controller="AppCtrl" style="display: none;">
+               <md-content style="padding-left:30%; padding-right:100px">
+                  <h3>
+                     Have any of your blood relatives ever been diagnosed with diabetes?
+                  </h3>
+
+                  <md-checkbox value="Yes1" ng-model="check_yes1" ng-disabled="check_no">Yes (parents, brothers,
+                     sisters, children)</md-checkbox><br>
+                  <md-checkbox value="Yes2" ng-model="check_yes2" ng-disabled="check_no">Yes (grandparents, aunts,
+                     uncles, cousins)</md-checkbox><br>
+                  <md-checkbox value="No" ng-model="check_no" ng-disabled="check_yes1 || check_yes2">No</md-checkbox>
+                  <br>
+                  <div class="check-element animate-show-hide" ng-show="check_yes1 || check_yes2 || check_no"
+                     style="width:80%;">
+                     <i>The probability of developing Type 2 Diabetes increases by 77.1% in those individuals where
+                        someone within the wider family (grandparents, aunts, uncles, cousins, cousin) have type 2
+                        diabetes. Likelihood for to developing Type 2 Diabetes is 68.6% higher in those individuals
+                        where someone in the immediate family (parents, brothers, sisters, and children) have Type 2
+                        Diabetes. Type 2 Diabetes is often caused by genetic predisposition. It also may occur as a
+                        result to cultural factors and unhealthy lifestyles in the family.</i>
+                  </div>
+                  <md-button class="add-tab md-primary md-raised" ng-disabled="!(check_yes1 || check_yes2 || check_no)"
+                     type="submit" style="margin-right: 0;" onclick="izvedi()"
+                     ng-click="submit_diabFamFar(check_yes2);submit_diabFamClose(check_yes1); calculateProb()">Next
+                  </md-button>
+               </md-content>
+            </div>
+
+            <div id="id_8" ng-controller="AppCtrl" align="center" style="display: none;" md-dynamic-height>
+               <md-content style="padding-left:100px; padding-right:100px">
+                  <div class="check-element animate-show-hide" align="center" md-dynamic-height
+                     style="width:500; text-align:center; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                     </br>
+                     <img style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"
+                        ng-src={{smiley}}></img>
+                     <h1>
+                        <p ng-bind="OverallRisk_text_title"></p>
+                     </h1>
+                     <h3>
+                        <p style="font-size: 16px" ng-bind="OverallRisk_text"></p>
+                     </h3>
+                  </div>
+                  </br></br>
+                  <table ng-controller="AppCtrl" border="2">
+                     <tr ng-repeat="x in Answers">
+                        <td ng-style="firstRow(x.Question)">{{x.Question}}</td>
+                        <td ng-style="firstRow(x.Answer)">{{x.Answer}}</td>
+                     </tr>
+                  </table>
+                  </br>
+                  <input type="button" value="More" ng-click="ShowHide()" />
+                  <br />
+                  <br />
+                  <div ng-show="IsVisible">
+                     <div class="check-element animate-show-hide" align="center" style="width:500; text-align:center;">
+                        TYPE 2 DIABETES MELLITUS<h3>
+                           <p ng-bind="T2D_text"></p>
+                        </h3>
+                     </div>
+                     </br></br>
+                     <div class="check-element animate-show-hide" align="center" style="width:500; text-align:center;">
+                        IFG <h3>
+                           <p ng-bind="IFG_text"></p>
+                        </h3>
+                     </div>
+                     </br></br>
+                  </div>
+               </md-content>
+               <div align="right">
+                  <img ng-src="../images/print.png" onclick="window.print();" style="width:50px; height:50px"></img>
+               </div>
+            </div>
+         </form>
+      </md-content>
+   </div>
+
+   <!-- Angular Material requires Angular.js Libraries -->
+   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+   <!-- Angular Material Library -->
+   <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+   <script src="../js/script.js"></script>
+</body>
+
+<section class="mbr-cards mbr-section mbr-section-nopadding" id="features3-1c"
+   style="background-color: rgb(255, 255, 255);">
+
+   <div class="mbr-cards-row row">
+      <div class="mbr-cards-col col-xs-12 col-lg-2" style="padding-top: 20px; padding-bottom: 20px;">
+         <div class="container">
+            <div class="card cart-block">
+               <div class="card-img" align="center">
+                  <img src="../images/logo-um-fhs.png" class="card-img-top">
+                  <img src="../images/logo2.jpg" class="card-img-top">
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+<footer class="mbr-small-footer mbr-section mbr-section-nopadding" id="footer1-1a"
+   style="background-color: rgb(0, 106, 142); padding-top: 1rem; padding-bottom: 1rem;">
+   <div class="container">
+      <p style="text-align: center; color:#DCDCDC; font-size:12px; padding-left:1%; padding-right:1%;">Projekt delno
+         financira Evropska unija, in sicer iz Evropskega socialnega sklada.
+         Projekt se izvaja v okviru Operativnega programa za izvajanje Evropske kohezijske politike v obdobju 2014 -
+         2020,
+         v okviru prednostne osi: 10. Znanje, spretnosti in vse življenjsko učenje za boljšo zaposljivost, prednostne
+         naložbe: 10.1.
+         Krepitev enake dostopnosti vse življenjskega učenja za vse starostne skupine v formalnem, neformalnem in
+         priložnostnem okolju, izpolnjevanje znanj,
+         spretnosti in kompetenc delovne sile ter spodbujanje prožnih oblik učenja, vključno prek poklicnega usmerjanja
+         in validiranja pridobljenih kompetenc,
+         specifičnega cilja: "Spodbujanje prožnih oblik učenja ter podpora kakovostni karierni orientaciji za
+         šolajočo se mladino na vseh ravneh
+         izobraževalnega sistema", v okviru potrjene operacije: "Projektno delo z gospodarstvom in negospodarstvom v
+         lokalnem in regionalnem okolju ""
+         Po kreativni poti do znanja 2016/2017.</p>
+   </div>
+</footer>
+
+</html>
+<!--
+   Copyright 2016 Google Inc. All Rights Reserved. 
+   Use of this source code is governed by an MIT-style license that can be in foundin the LICENSE file at http://material.angularjs.org/license.
+   -->
