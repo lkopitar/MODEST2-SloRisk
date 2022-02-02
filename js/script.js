@@ -2,13 +2,13 @@
           * You must include the dependency on 'ngMaterial' 
           */
          var data = [
-         {title: 'Gender', content: "GENDER", image: "../images/sex.jpg", disabled: false},
+         {title: 'Gender', content: "GENDER", image: "images/sex.jpg", disabled: false},
 		 {title: 'Age', content: "AGE", image: "", disabled: false},
-         {title: 'Waist circumference', content: "WAIST CIRCUMFERENCE (IN CM)", image: "../images/waist.jpg", disabled: false},
-         {title: 'Physical activity', content: "PHYSICAL ACTIVITY",  image: "../images/physAct.jpg", disabled: false},
-         {title: 'High blood sugar', content: "HISTORY OF HIGH BLOOD SUGAR", image: "../images/bloodSugar.jpg", disabled: false},
-         {title: 'High blood pressure', content: "HIGH BLOOD PRESSURE", image: "../images/highBlood.jpg", disabled: false},
-         {title: 'Diabetes in family', content: "DIABETES IN FAMILY", image: "../images/diabFamily.jpg", disabled: false},
+         {title: 'Waist circumference', content: "WAIST CIRCUMFERENCE (IN CM)", image: "images/waist.jpg", disabled: false},
+         {title: 'Physical activity', content: "PHYSICAL ACTIVITY",  image: "images/physAct.jpg", disabled: false},
+         {title: 'High blood sugar', content: "HISTORY OF HIGH BLOOD SUGAR", image: "images/bloodSugar.jpg", disabled: false},
+         {title: 'High blood pressure', content: "HIGH BLOOD PRESSURE", image: "images/highBlood.jpg", disabled: false},
+         {title: 'Diabetes in family', content: "DIABETES IN FAMILY", image: "images/diabFamily.jpg", disabled: false},
          {title: 'Results', content: "RESULTS", image: "", disabled: false}]
 		 
          var st = 0;
@@ -126,15 +126,15 @@
 				}
 				
 				if($scope.T2D > 0.1259990){
-					$scope.smiley = "../images/sad.jpg";
+					$scope.smiley = "images/sad.jpg";
 					$scope.OverallRisk_text_title = "HIGH RISK";
 					$scope.OverallRisk_text = "Your risk of developing Type 2 Diabetes is high. We recommend that you consult your GP as it is necessary to make further inquiries, such as laboratory testing of blood sugar levels.";
 				}else if ($scope.IFG > 0.2439808){
-					$scope.smiley = "../images/worried.jpg";
+					$scope.smiley = "images/worried.jpg";
 					$scope.OverallRisk_text_title = "MEDIUM RISK";
 					$scope.OverallRisk_text = "Your risk of developing Type 2 Diabetes is moderate, which means that immediate action is required. Above all, it is important to eat fruits/vegetables on a daily basis and to reduce the intake of fat (fried foods, butter, margarine, and industrially produced foods), sugar (sweets, jam, honey, fruit syrups) and salt. We recommend weight loss, in case you have an increased body weight. It is also important that you are physically active for at least 150 minutes per week. Improving your lifestyle may decrease the risk of developing Type 2 Diabetes.";
 				}else{
-					$scope.smiley = "../images/happy.jpg";
+					$scope.smiley = "images/happy.jpg";
 					$scope.OverallRisk_text_title = "LOW RISK";
 					$scope.OverallRisk_text = "Your risk of developing Type 2 Diabetes is low. Nevertheless, we recommend that you regularly monitor and control the risk of developing the disease because the risk of Type 2 Diabetes increases with age and varies depending on lifestyle. It is important to control your own body weight, to stay physically active and eat healthy. It is also important to let go of bad habits (e.g. alcohol, tobacco).";
 				}
@@ -146,9 +146,9 @@
           if(st<Object.keys(data).length){
 		  if(st ==1){
 			if($scope.var_female == 1){
-				data[1] = {title: 'Age', content: "AGE", image: "../images/age_female.jpg", disabled: false};
+				data[1] = {title: 'Age', content: "AGE", image: "images/age_female.jpg", disabled: false};
 			}else{			
-				data[1] = {title: 'Age', content: "AGE", image: "../images/age_male.jpg", disabled: false};
+				data[1] = {title: 'Age', content: "AGE", image: "images/age_male.jpg", disabled: false};
 			}
 		  }
 			tabs.push(data[st]);
